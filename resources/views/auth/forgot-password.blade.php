@@ -1,4 +1,7 @@
 <x-guest-layout>
+  <x-slot name="title">
+    Lupa Password
+  </x-slot>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('lupa kata sandi Anda? Tidak masalah. Beri tahu kami alamat email Anda yang terdaftar di sistem dan kami akan mengirimi Anda tautan setel ulang kata sandi melalui email.') }}
     </div>

@@ -1,4 +1,7 @@
 <x-guest-layout>
+  <x-slot name="title">
+    Verifikasi Email
+  </x-slot>
     <div class="mb-4 text-sm text-gray-600">
       Terima kasih telah melakukan login pada aplikasi, harap segera melakukan verifikasi email yang dikirim ke email anda
     </div>

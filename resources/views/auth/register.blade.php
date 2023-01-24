@@ -1,5 +1,7 @@
 <x-guest-layout>
-
+  <x-slot name="title">
+    Registrasi
+  </x-slot>
     <h1 class="my-10 text-4xl font-semibold text-slate-900">Registrasi</h1>
 
     <form method="POST" action="{{ route('register') }}">

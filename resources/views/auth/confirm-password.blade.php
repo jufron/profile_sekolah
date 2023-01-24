@@ -1,4 +1,7 @@
 <x-guest-layout>
+  <x-slot name="title">
+    COnfirm Password
+  </x-slot>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Harap konfirmasi kata sandi Anda sebelum melanjutkan.') }}
     </div>

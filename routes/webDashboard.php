@@ -4,10 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
 
-
-// Route::get('/test', function () {
-//   return view('dashboard.index');
-// });
+Route::get('/test', function () {
+  return view('dashboard.index');
+});
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function () {
   Route::get('/', function () {

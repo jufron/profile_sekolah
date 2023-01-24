@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,8 +26,13 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
+      $this->registerPolicies();
 
-        //
+      VerifyEmail::toMailUsing( function ($notifiable, $url) {
+        return ( new MailMessage )
+          ->subject('Verifikasi Email Anda')
+          ->line('klik tombol di bawah untuk melakukan verifikasi alamat email')
+          ->action('Verifikasi Alamat Email', $url);
+      });
     }
 }

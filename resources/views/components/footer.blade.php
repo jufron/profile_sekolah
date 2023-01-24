@@ -40,16 +40,16 @@
           <a class="block mb-3" target="_blank" href="mailto:jufrontamoama@gmail.com">smkuyelindo108@gmail.com</a>
 
           <div class="flex flex-wrap mt-2 mb-5">
-            <a target="_blank" href="https://web.facebook.com/jufron.tama.7/" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400 dark:hover:bg-slate-800">
+            <a target="_blank" href="https://web.facebook.com/jufron.tama.7/" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400">
               <i class="fa-brands fa-facebook fa-lg"></i>
             </a>
-            <a target="_blank" href="https://www.instagram.com/jufrontamoama/" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400 dark:hover:bg-slate-800">
+            <a target="_blank" href="https://www.instagram.com/jufrontamoama/" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400">
               <i class="fa-brands fa-instagram fa-lg"></i>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/jufron-tamo-ama-71709622b" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400 dark:hover:bg-slate-800">
+            <a target="_blank" href="https://www.linkedin.com/in/jufron-tamo-ama-71709622b" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400">
               <i class="fa-brands fa-tiktok fa-lg"></i>
             </a>
-            <a target="_blank" href="https://github.com/jufron" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400 dark:hover:bg-slate-800">
+            <a target="_blank" href="https://github.com/jufron" class="block p-5 transition rounded-lg hover:bg-slate-400 duration-400">
               <i class="fa-brands fa-youtube"></i>
             </a>
           </div>
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-  <div class="bg-slate-700 dark:bg-slate-800" x-data="{ tahun : new Date().getFullYear() }">
+  <div class="bg-slate-700" x-data="{ tahun : new Date().getFullYear() }">
     <p class="py-3 text-center text-white">
       &copy; Copyright
       <span id="tahun" x-text="tahun"></span>

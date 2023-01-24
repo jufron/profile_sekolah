@@ -3,6 +3,7 @@
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -10,8 +11,8 @@ Route::get('/', function () {
 Route::controller(PagesController::class)->group( function () {
   Route::get('home', 'home')->name('beranda');
 
-  Route::prefix('profil/')->group( function () {
-    Route::get('sejarah', 'sejarah')->name('sejarah');
+  Route::prefix('profil')->group( function () {
+    Route::get('/sejarah', 'sejarah')->name('sejarah');
     Route::get('visi-misi', 'visiMisi')->name('visiMisi');
     Route::get('programKeahlian', 'programKeahlian')->name('programKeahlian');
   });
@@ -23,3 +24,6 @@ Route::controller(PagesController::class)->group( function () {
 
   Route::get('pengajar', 'listGuru')->name('daftar_guru');
 });
+
+require __DIR__.'/auth.php';
+require __DIR__.'/webDashboard.php';

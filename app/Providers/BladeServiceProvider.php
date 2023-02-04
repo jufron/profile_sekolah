@@ -27,5 +27,11 @@ class BladeServiceProvider extends ServiceProvider
       Blade::if('requestIs', function ($value) {
         return request()->is($value);
       });
+
+      Blade::if('requestRoute', function ($value) {
+        return request()->routeIs($value);
+      });
+
+      // Blade::if('')
     }
 }

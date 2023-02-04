@@ -20,7 +20,7 @@
 
           <div class="form-group my-2">
             <label for="poster">Poster</label>
-            <input type="file" class="form-control-file" id="poster" name="poster" value="{{ $jurusan->poster }}">
+            <input type="file" class="form-control-file" id="poster" name="poster" value="{{ $jurusan->pos }}">
             @error('poster')
               <div class="alert alert-danger mt-2 col-md-4" role="alert">
                 {{ $message }}

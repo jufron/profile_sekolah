@@ -163,6 +163,12 @@
           <span>Jurusan</span></a>
   </li>
 
+  <li class="nav-item @requestRoute('testimoni.index') active @endrequestRoute">
+      <a class="nav-link" href="{{ route('testimoni.index') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Testimoni</span></a>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 

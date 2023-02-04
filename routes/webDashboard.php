@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\{
-    BannerController,
-    BeritaController,
-    JurusanController,
-    KategoryController,
+  BannerController,
+  BeritaController,
+  JurusanController,
+  KategoryController,
   SocialMediaLinkController,
-  TeleponController
+  TeleponController,
+  TestimoniController
 };
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function () {
@@ -63,6 +64,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
   ]);
   Route::get('show_data/{jurusan}', [JurusanController::class, 'showJurusan'])->name('jurusan.show');
 
-
+  // testimoni
+  Route::resource('testimoni', TestimoniController::class);
 }); // auth
 

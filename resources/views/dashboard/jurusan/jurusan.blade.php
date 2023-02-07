@@ -5,7 +5,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Daftar Jurusan</h6>
       </div>
       <div class="card-body">
-        <h1 class="h3 mb-0 text-gray-800 mb-2">Jurusan</h1>
+        <h1 class="h3 text-gray-800 mb-2">Jurusan</h1>
 
         <a href="{{ route('jurusan.create') }}" class="btn btn-success btn-icon-split my-3">
           <span class="text">Tambah</span>
@@ -134,7 +134,7 @@
               <p class="mt-3">${deskripsi}</p>
               <div class="row mt-4">
                 <div class="col-md-5 col-6">
-                  Tanggal Buat 
+                  Tanggal Buat
                 </div>
                 <div class="col-md-7 col-6">
                   : ${tanggal_buat}
@@ -142,7 +142,7 @@
               </div>
               <div class="row">
                 <div class="col-md-5 col-6">
-                  Tanggal Perbaharui 
+                  Tanggal Perbaharui
                 </div>
                 <div class="col-md-7 col-6">
                   : ${tanggal_perbaharui}

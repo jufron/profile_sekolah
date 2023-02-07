@@ -5,7 +5,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Daftar Banner</h6>
       </div>
       <div class="card-body">
-        <h1 class="h3 mb-0 text-gray-800 mb-2">Banner</h1>
+        <h1 class="h3 text-gray-800 mb-2">Banner</h1>
 
         <a href="{{ route('banner.create') }}" class="btn btn-success btn-icon-split my-3">
           <span class="text">Tambah</span>

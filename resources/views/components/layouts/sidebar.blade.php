@@ -102,7 +102,7 @@
   </li> --}}
 
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  {{-- <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
@@ -115,7 +115,7 @@
               <a class="collapse-item" href="cards.html">Cards</a>
           </div>
       </div>
-  </li>
+  </li> --}}
 
   <!-- Divider -->
   <hr class="sidebar-divider">
@@ -182,23 +182,77 @@
     Fitur Website
   </div>
 
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+  <li class="nav-item
+  @if (request()->routeIs('banner.index') ||
+      request()->routeIs('jurusan.index') ||
+      request()->routeIs('testimoni.index') ||
+      request()->routeIs('telepon.index') ||
+      request()->routeIs('social_media.index') ||
+      request()->routeIs('pertanyaan.index')) active @endif">
+      <a
+        class="@if (request()->routeIs('banner.index') ||
+                    request()->routeIs('jurusan.index') ||
+                    request()->routeIs('testimoni.index') ||
+                    request()->routeIs('telepon.index') ||
+                    request()->routeIs('social_media.index') ||
+                    request()->routeIs('pertanyaan.index'))
+                    nav-link
+                @else
+                    nav-link collapsed
+                @endif"
+        href="#"
+        data-toggle="collapse"
+        data-target="#collapseWebsite"
+        aria-expanded="false"
+        aria-controls="collapseWebsite"
+         >
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Website</span>
+      </a>
+      <div
+        id="collapseWebsite"
+        class="collapse @if (request()->routeIs('banner.index') ||
+                             request()->routeIs('jurusan.index') ||
+                             request()->routeIs('testimoni.index') ||
+                             request()->routeIs('telepon.index') ||
+                             request()->routeIs('social_media.index') ||
+                             request()->routeIs('pertanyaan.index')) show @endif"
+        aria-labelledby="headingBerita"
+        data-parent="#accordionSidebar"
+        @if (request()->routeIs('banner.index') ||
+            request()->routeIs('jurusan.index') ||
+            request()->routeIs('testimoni.index') ||
+            request()->routeIs('telepon.index') ||
+            request()->routeIs('social_media.index') ||
+            request()->routeIs('pertanyaan.index')) style="" @endif>
+          <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item @requestRoute('banner.index') active @endrequestRoute" href="{{ route('banner.index') }}">Banner</a>
+              <a class="collapse-item @requestRoute('jurusan.index') active @endrequestRoute" href="{{ route('jurusan.index') }}">Jurusan</a>
+              <a class="collapse-item @requestRoute('testimoni.index') active @endrequestRoute" href="{{ route('testimoni.index') }}">Testimoni</a>
+              <a class="collapse-item @requestRoute('telepon.index') active @endrequestRoute" href="{{ route('telepon.index') }}">Telepon</a>
+              <a class="collapse-item @requestRoute('social_media.index') active @endrequestRoute" href="{{ route('social_media.index') }}">Social Media</a>
+              <a class="collapse-item @requestRoute('pertanyaan.index') active @endrequestRoute" href="{{ route('pertanyaan.index') }}">Pertanyaan Pendaftaran</a>
+          </div>
+      </div>
+  </li>
+
+  {{-- <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('banner.index') }}">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fas fa-fw fa-folder"></i>
       <span>Banner</span>
     </a>
   </li>
 
   <li class="nav-item @requestRoute('jurusan.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('jurusan.index') }}">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Jurusan</span>
-      </a>
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Jurusan</span>
+    </a>
   </li>
 
   <li class="nav-item @requestRoute('testimoni.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('testimoni.index') }}">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fas fa-fw fa-folder"></i>
       <span>Testimoni</span>
     </a>
   </li>
@@ -206,7 +260,7 @@
   <!-- Nav Item - Charts -->
   <li class="nav-item @requestRoute('telepon.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('telepon.index') }}">
-      <i class="fas fa-fw fa-chart-area"></i>
+      <i class="fas fa-fw fa-folder"></i>
       <span>Telepon</span>
     </a>
   </li>
@@ -214,17 +268,17 @@
   <!-- Nav Item - Tables -->
   <li class="nav-item @requestRoute('social_media.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('social_media.index') }}">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fas fa-fw fa-folder"></i>
       <span>Social Media</span>
     </a>
   </li>
 
   <li class="nav-item @requestRoute('pertanyaan.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('pertanyaan.index') }}">
-      <i class="fas fa-fw fa-table"></i>
+      <i class="fas fa-fw fa-folder"></i>
       <span>Pertanyaan Pendaftaran</span>
     </a>
-  </li>
+  </li> --}}
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

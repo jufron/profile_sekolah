@@ -5,8 +5,10 @@
         <h6 class="m-0 font-weight-bold text-primary">Daftaar Pertanyaan</h6>
       </div>
       <div class="card-body">
-        <h1 class="h3 mb-0 text-gray-800 mb-2">Pertanyaan</h1>
-
+        <h1 class="h3 text-gray-800 mb-2">Pertanyaan</h1>
+        <div class="alert alert-info" role="alert">
+          Pertanyaan pertanyaan ini akan di tampilkan di halaman pendaftaran peserta didik baru
+        </div>
         <a href="{{ route('pertanyaan.create') }}" class="btn btn-success btn-icon-split my-3">
           <span class="text">Tambah</span>
         </a>

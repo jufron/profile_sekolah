@@ -5,12 +5,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\{
   BannerController,
   BeritaController,
-    DaftarPertanyaanController,
-    JurusanController,
+  DaftarPertanyaanController,
+  JurusanController,
   KategoryController,
   SocialMediaLinkController,
   TeleponController,
-  TestimoniController
+  TestimoniController,
+  UserController
 };
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function () {
@@ -68,10 +69,14 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
   // testimoni
   Route::resource('testimoni', TestimoniController::class);
 
-  // 
+  //
   Route::resource('pertanyaan', DaftarPertanyaanController::class)->parameters([
     'pertanyaan'    => 'daftarPertanyaan'
   ]);
+
+  Route::resource('user-manajement', UserController::class)
+      ->except(['create', 'store'])
+      ->parameters(['user_manajement'  => 'user']);
 
 }); // auth
 

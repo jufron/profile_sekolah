@@ -5,7 +5,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Daftar Telepon</h6>
       </div>
       <div class="card-body">
-        <h1 class="h3 mb-0 text-gray-800 mb-2">Telepon</h1>
+        <h1 class="h3 text-gray-800 mb-2">Telepon</h1>
 
         <a href="{{ route('telepon.create') }}" class="btn btn-success btn-icon-split my-3">
           <span class="text">Tambah</span>
@@ -36,7 +36,7 @@
             <tbody>
               @foreach ($telepon as $tlp)
               <tr>
-                <td>1</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $tlp->nama }}</td>
                 <td>{{ $tlp->nomor }}</td>
                 <td>{{ $tlp->tanggal_buat }}</td>

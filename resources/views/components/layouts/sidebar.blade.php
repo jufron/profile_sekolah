@@ -23,8 +23,8 @@
       Umum
   </div>
 
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('banner.index') }}">
+  <li class="nav-item @requestRoute('user-manajement.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('user-manajement.index') }}">
       <i class="fas fa-fw fa-table"></i>
       <span>User</span>
     </a>
@@ -33,7 +33,7 @@
   <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('banner.index') }}">
       <i class="fas fa-fw fa-table"></i>
-      <span>Foto Profil</span>
+      <span>Galeri</span>
     </a>
   </li>
 

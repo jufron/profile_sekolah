@@ -20,18 +20,36 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-      Interface
+      Umum
   </div>
+
+  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('banner.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>User</span>
+    </a>
+  </li>
+
+  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('banner.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Foto Profil</span>
+    </a>
+  </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item
   @if (request()->routeIs('berita') || request()->routeIs('kategory')) active @endif">
       <a
-        class="@requestRoute('berita') nav-link collapsed @else nav-link @endrequestRoute"
+        class="@if (request()->routeIs('berita') || request()->routeIs('kategory'))
+        nav-link
+        @else
+        nav-link collapsed
+        @endif"
         href="#"
         data-toggle="collapse"
         data-target="#collapseBerita"
-        aria-expanded="true"
+        aria-expanded="false"
         aria-controls="collapseBerita"
          >
           <i class="fas fa-fw fa-wrench"></i>
@@ -104,11 +122,39 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-      Addons
+      Akademik
   </div>
 
+  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('banner.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Guru</span>
+    </a>
+  </li>
+
+  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('banner.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Absensi Wali Kelas</span>
+    </a>
+  </li>
+
+  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('banner.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Absensi Umum</span>
+    </a>
+  </li>
+
+  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('banner.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Jurnal Kelas</span>
+    </a>
+  </li>
+
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  {{-- <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
           aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
@@ -126,7 +172,7 @@
               <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
       </div>
-  </li>
+  </li> --}}
 
 
   <hr class="sidebar-divider">
@@ -136,37 +182,48 @@
     Fitur Website
   </div>
 
+  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('banner.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Banner</span>
+    </a>
+  </li>
+
+  <li class="nav-item @requestRoute('jurusan.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('jurusan.index') }}">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Jurusan</span>
+      </a>
+  </li>
+
+  <li class="nav-item @requestRoute('testimoni.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('testimoni.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Testimoni</span>
+    </a>
+  </li>
+
   <!-- Nav Item - Charts -->
   <li class="nav-item @requestRoute('telepon.index') active @endrequestRoute">
-      <a class="nav-link" href="{{ route('telepon.index') }}">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Telepon</span>
-      </a>
+    <a class="nav-link" href="{{ route('telepon.index') }}">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Telepon</span>
+    </a>
   </li>
 
   <!-- Nav Item - Tables -->
   <li class="nav-item @requestRoute('social_media.index') active @endrequestRoute">
-      <a class="nav-link" href="{{ route('social_media.index') }}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Social Media</span></a>
+    <a class="nav-link" href="{{ route('social_media.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Social Media</span>
+    </a>
   </li>
 
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-      <a class="nav-link" href="{{ route('banner.index') }}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Banner</span></a>
-  </li>
-
-  <li class="nav-item @requestRoute('jurusan.index') active @endrequestRoute">
-      <a class="nav-link" href="{{ route('jurusan.index') }}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Jurusan</span></a>
-  </li>
-
-  <li class="nav-item @requestRoute('testimoni.index') active @endrequestRoute">
-      <a class="nav-link" href="{{ route('testimoni.index') }}">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Testimoni</span></a>
+  <li class="nav-item @requestRoute('pertanyaan.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('pertanyaan.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Pertanyaan Pendaftaran</span>
+    </a>
   </li>
 
   <!-- Divider -->

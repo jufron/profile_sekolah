@@ -29,6 +29,5 @@
         </form>
       </div>
     </div>
-
   </x-slot>
 </x-layouts>

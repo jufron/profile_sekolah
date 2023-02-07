@@ -5,7 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\{
   BannerController,
   BeritaController,
-  JurusanController,
+    DaftarPertanyaanController,
+    JurusanController,
   KategoryController,
   SocialMediaLinkController,
   TeleponController,
@@ -66,5 +67,11 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
 
   // testimoni
   Route::resource('testimoni', TestimoniController::class);
+
+  // 
+  Route::resource('pertanyaan', DaftarPertanyaanController::class)->parameters([
+    'pertanyaan'    => 'daftarPertanyaan'
+  ]);
+
 }); // auth
 

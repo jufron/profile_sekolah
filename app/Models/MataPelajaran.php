@@ -6,14 +6,15 @@ use App\Http\Traits\DateTimeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Banner extends Model
+class MataPelajaran extends Model
 {
-  use HasFactory;
-  use DateTimeTrait;
+    use HasFactory;
+    use DateTimeTrait;
 
-  protected $table = 'banner';
+    protected $table = 'mata_pelajaran';
 
-  protected $fillable = [
-    'nama_banner'
-  ];
+    protected $fillable = [
+      'nama'
+    ];
+
 }

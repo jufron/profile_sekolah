@@ -30,7 +30,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // masuk ke halaman dashboard
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route('dashboard');
     }
 
     /**

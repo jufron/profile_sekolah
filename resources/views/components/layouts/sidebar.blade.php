@@ -132,6 +132,13 @@
     </a>
   </li>
 
+  <li class="nav-item @requestRoute('mata-pelajaran.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('mata-pelajaran.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Mata Pelajaran</span>
+    </a>
+  </li>
+
   <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('banner.index') }}">
       <i class="fas fa-fw fa-table"></i>

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use App\Http\Traits\DateTimeTrait;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Jurusan extends Model
 {
-    use HasFactory;
+    use HasFactory, DateTimeTrait;
 
     protected $table = 'jurusan';
 
@@ -48,20 +48,6 @@ class Jurusan extends Model
     {
       return Attribute::make(
         get: fn () =>  Str::limit($this->getAttribute('deskripsi'), 40, '...')
-      );
-    }
-
-    protected function tanggalBuat () : Attribute
-    {
-      return Attribute::make(
-        get : fn ($value) => Carbon::parse($value)->format('d-M-Y')
-      );
-    }
-
-    protected function tanggalPerbaharui () : Attribute
-    {
-      return Attribute::make(
-        get : fn ($value) => Carbon::parse($value)->format('d-M-Y')
       );
     }
 

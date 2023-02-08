@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Carbon;
+use App\Http\Traits\DateTimeTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SocialMediaLink extends Model
 {
-    use HasFactory;
+    use HasFactory, DateTimeTrait;
 
     protected $table = 'social_media_link';
 
@@ -21,19 +20,5 @@ class SocialMediaLink extends Model
     public function social_media ()
     {
       return $this->belongsTo(SocialMedia::class);
-    }
-
-    protected function tanggalBuat () : Attribute
-    {
-      return Attribute::make(
-        get : fn ($value) => Carbon::parse($value)->format('d-M-Y')
-      );
-    }
-
-    protected function tanggalPerbaharui () : Attribute
-    {
-      return Attribute::make(
-        get : fn ($value) => Carbon::parse($value)->format('d-M-Y')
-      );
     }
 }

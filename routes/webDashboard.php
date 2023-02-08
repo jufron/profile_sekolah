@@ -8,7 +8,8 @@ use App\Http\Controllers\Dashboard\{
   DaftarPertanyaanController,
   JurusanController,
   KategoryController,
-  SocialMediaLinkController,
+    MataPelajaranController,
+    SocialMediaLinkController,
   TeleponController,
   TestimoniController,
   UserController
@@ -70,13 +71,16 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
   Route::resource('testimoni', TestimoniController::class);
 
   //
-  Route::resource('pertanyaan', DaftarPertanyaanController::class)->parameters([
-    'pertanyaan'    => 'daftarPertanyaan'
-  ]);
+  Route::resource('pertanyaan', DaftarPertanyaanController::class)
+      ->parameters(['pertanyaan'    => 'daftarPertanyaan']);
 
   Route::resource('user-manajement', UserController::class)
       ->except(['create', 'store'])
       ->parameters(['user_manajement'  => 'user']);
 
-}); // auth
+  // mata pelajaran
+  Route::resource('mata-pelajaran', MataPelajaranController::class)
+      ->except(['show'])
+      ->parameters(['mata_pelajaran'  => 'mataPelajaran']);
 
+}); // auth

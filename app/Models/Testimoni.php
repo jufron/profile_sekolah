@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Traits\DateTimeTrait;
 use Illuminate\Support\Str;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Testimoni extends Model
 {
-    use HasFactory;
+    use HasFactory, DateTimeTrait;
 
     protected $table = 'testimoni';
 
@@ -20,7 +20,7 @@ class Testimoni extends Model
       'avatar',
       'text'
     ];
-  
+
     protected $appends = [
       'tanggal_buat',
       'tanggal_perbaharui',
@@ -41,21 +41,4 @@ class Testimoni extends Model
         get: fn () => Storage::url($this->getAttribute('avatar'))
       );
     }
-
-    // API
-    protected function tanggalBuat () : Attribute
-    {
-      return Attribute::make(
-        get : fn ($value) => Carbon::parse($value)->format('d-M-Y')
-      );
-    }
-
-    // API
-    protected function tanggalPerbaharui () : Attribute
-    {
-      return Attribute::make(
-        get : fn ($value) => Carbon::parse($value)->format('d-M-Y')
-      );
-    }
-
 }

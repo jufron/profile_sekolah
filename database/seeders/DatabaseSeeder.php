@@ -22,8 +22,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-          // SocialMediaSeeder::class
-          MataPelajaranSeeder::class
+          // SocialMediaSeeder::class,
+          // MataPelajaranSeeder::class,
+          // RolePermissionSeeder::class,
+          UserSeeder::class
         ]);
     }
 }

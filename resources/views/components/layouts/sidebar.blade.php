@@ -9,11 +9,21 @@
   <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
+  @role('super-admin')
   <li class="nav-item active">
       <a class="nav-link" href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Home</span></a>
+        <span>Home Admin</span></a>
   </li>
+  @endrole
+
+  @role('wali-kelas')
+  <li class="nav-item active">
+      <a class="nav-link" href="index.html">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Home Wali Kelas</span></a>
+  </li>
+  @endrole
 
   <!-- Divider -->
   <hr class="sidebar-divider">
@@ -23,6 +33,7 @@
       Umum
   </div>
 
+  @hasrole('super-admin')
   <li class="nav-item @requestRoute('user-manajement.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('user-manajement.index') }}">
       <i class="fas fa-fw fa-table"></i>
@@ -36,6 +47,7 @@
       <span>Galeri</span>
     </a>
   </li>
+  @endhasrole
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item
@@ -125,6 +137,7 @@
       Akademik
   </div>
 
+  @hasrole('super-admin')
   <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('banner.index') }}">
       <i class="fas fa-fw fa-table"></i>
@@ -138,13 +151,16 @@
       <span>Mata Pelajaran</span>
     </a>
   </li>
+  @endhasrole
 
+  @hasrole('wali-kelas')
   <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('banner.index') }}">
       <i class="fas fa-fw fa-table"></i>
       <span>Absensi Wali Kelas</span>
     </a>
   </li>
+  @endhasrole
 
   <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('banner.index') }}">
@@ -153,12 +169,14 @@
     </a>
   </li>
 
+  @role('super-admin|wali-kelas|guru')
   <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
     <a class="nav-link" href="{{ route('banner.index') }}">
       <i class="fas fa-fw fa-table"></i>
       <span>Jurnal Kelas</span>
     </a>
   </li>
+  @endrole
 
   <!-- Nav Item - Pages Collapse Menu -->
   {{-- <li class="nav-item">
@@ -181,118 +199,70 @@
       </div>
   </li> --}}
 
+  @hasrole('super-admin')
+    <hr class="sidebar-divider">
 
-  <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Fitur Website
+    </div>
 
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Fitur Website
-  </div>
-
-  <li class="nav-item
-  @if (request()->routeIs('banner.index') ||
-      request()->routeIs('jurusan.index') ||
-      request()->routeIs('testimoni.index') ||
-      request()->routeIs('telepon.index') ||
-      request()->routeIs('social_media.index') ||
-      request()->routeIs('pertanyaan.index')) active @endif">
-      <a
-        class="@if (request()->routeIs('banner.index') ||
-                    request()->routeIs('jurusan.index') ||
-                    request()->routeIs('testimoni.index') ||
-                    request()->routeIs('telepon.index') ||
-                    request()->routeIs('social_media.index') ||
-                    request()->routeIs('pertanyaan.index'))
-                    nav-link
-                @else
-                    nav-link collapsed
-                @endif"
-        href="#"
-        data-toggle="collapse"
-        data-target="#collapseWebsite"
-        aria-expanded="false"
-        aria-controls="collapseWebsite"
-         >
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Website</span>
-      </a>
-      <div
-        id="collapseWebsite"
-        class="collapse @if (request()->routeIs('banner.index') ||
-                             request()->routeIs('jurusan.index') ||
-                             request()->routeIs('testimoni.index') ||
-                             request()->routeIs('telepon.index') ||
-                             request()->routeIs('social_media.index') ||
-                             request()->routeIs('pertanyaan.index')) show @endif"
-        aria-labelledby="headingBerita"
-        data-parent="#accordionSidebar"
-        @if (request()->routeIs('banner.index') ||
-            request()->routeIs('jurusan.index') ||
-            request()->routeIs('testimoni.index') ||
-            request()->routeIs('telepon.index') ||
-            request()->routeIs('social_media.index') ||
-            request()->routeIs('pertanyaan.index')) style="" @endif>
-          <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item @requestRoute('banner.index') active @endrequestRoute" href="{{ route('banner.index') }}">Banner</a>
-              <a class="collapse-item @requestRoute('jurusan.index') active @endrequestRoute" href="{{ route('jurusan.index') }}">Jurusan</a>
-              <a class="collapse-item @requestRoute('testimoni.index') active @endrequestRoute" href="{{ route('testimoni.index') }}">Testimoni</a>
-              <a class="collapse-item @requestRoute('telepon.index') active @endrequestRoute" href="{{ route('telepon.index') }}">Telepon</a>
-              <a class="collapse-item @requestRoute('social_media.index') active @endrequestRoute" href="{{ route('social_media.index') }}">Social Media</a>
-              <a class="collapse-item @requestRoute('pertanyaan.index') active @endrequestRoute" href="{{ route('pertanyaan.index') }}">Pertanyaan Pendaftaran</a>
-          </div>
-      </div>
-  </li>
-
-  {{-- <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('banner.index') }}">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Banner</span>
-    </a>
-  </li>
-
-  <li class="nav-item @requestRoute('jurusan.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('jurusan.index') }}">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Jurusan</span>
-    </a>
-  </li>
-
-  <li class="nav-item @requestRoute('testimoni.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('testimoni.index') }}">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Testimoni</span>
-    </a>
-  </li>
-
-  <!-- Nav Item - Charts -->
-  <li class="nav-item @requestRoute('telepon.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('telepon.index') }}">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Telepon</span>
-    </a>
-  </li>
-
-  <!-- Nav Item - Tables -->
-  <li class="nav-item @requestRoute('social_media.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('social_media.index') }}">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Social Media</span>
-    </a>
-  </li>
-
-  <li class="nav-item @requestRoute('pertanyaan.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('pertanyaan.index') }}">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Pertanyaan Pendaftaran</span>
-    </a>
-  </li> --}}
-
-  <!-- Divider -->
-  <hr class="sidebar-divider d-none d-md-block">
+    <li class="nav-item @if (request()->routeIs('banner.index') ||
+        request()->routeIs('jurusan.index') ||
+        request()->routeIs('testimoni.index') ||
+        request()->routeIs('telepon.index') ||
+        request()->routeIs('social_media.index') ||
+        request()->routeIs('pertanyaan.index')) active @endif">
+        <a
+          class="@if (request()->routeIs('banner.index') ||
+                      request()->routeIs('jurusan.index') ||
+                      request()->routeIs('testimoni.index') ||
+                      request()->routeIs('telepon.index') ||
+                      request()->routeIs('social_media.index') ||
+                      request()->routeIs('pertanyaan.index'))
+                      nav-link
+                  @else
+                      nav-link collapsed
+                  @endif"
+          href="#"
+          data-toggle="collapse"
+          data-target="#collapseWebsite"
+          aria-expanded="false"
+          aria-controls="collapseWebsite"
+           >
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Website</span>
+        </a>
+        <div
+          id="collapseWebsite"
+          class="collapse @if (request()->routeIs('banner.index') ||
+                               request()->routeIs('jurusan.index') ||
+                               request()->routeIs('testimoni.index') ||
+                               request()->routeIs('telepon.index') ||
+                               request()->routeIs('social_media.index') ||
+                               request()->routeIs('pertanyaan.index')) show @endif"
+          aria-labelledby="headingBerita"
+          data-parent="#accordionSidebar"
+          @if (request()->routeIs('banner.index') ||
+              request()->routeIs('jurusan.index') ||
+              request()->routeIs('testimoni.index') ||
+              request()->routeIs('telepon.index') ||
+              request()->routeIs('social_media.index') ||
+              request()->routeIs('pertanyaan.index')) style="" @endif>
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item @requestRoute('banner.index') active @endrequestRoute" href="{{ route('banner.index') }}">Banner</a>
+                <a class="collapse-item @requestRoute('jurusan.index') active @endrequestRoute" href="{{ route('jurusan.index') }}">Jurusan</a>
+                <a class="collapse-item @requestRoute('testimoni.index') active @endrequestRoute" href="{{ route('testimoni.index') }}">Testimoni</a>
+                <a class="collapse-item @requestRoute('telepon.index') active @endrequestRoute" href="{{ route('telepon.index') }}">Telepon</a>
+                <a class="collapse-item @requestRoute('social_media.index') active @endrequestRoute" href="{{ route('social_media.index') }}">Social Media</a>
+                <a class="collapse-item @requestRoute('pertanyaan.index') active @endrequestRoute" href="{{ route('pertanyaan.index') }}">Pertanyaan Pendaftaran</a>
+            </div>
+        </div>
+    </li>
+  @endhasrole
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
       <button class="rounded-circle border-0" id="sidebarToggle"></button>
   </div>
-
 </ul>

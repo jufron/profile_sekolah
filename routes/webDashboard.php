@@ -3,84 +3,77 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\{
-  BannerController,
   BeritaController,
-  DaftarPertanyaanController,
-  JurusanController,
   KategoryController,
-    MataPelajaranController,
-    SocialMediaLinkController,
-  TeleponController,
-  TestimoniController,
+  MataPelajaranController,
   UserController
 };
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function () {
 
-  // Route::get('/', function () {
-  //   return view('dashboard');
-  // })->name('dashboard');
-
   Route::get('/', fn () => view('dashboard.index'))->name('dashboard');
 
-  // user manajement
-  Route::controller(ProfileController::class)->group( function () {
-    Route::get('/profile', 'edit')->name('profile.edit');
-    Route::patch('/profile', 'update')->name('profile.update');
-    Route::delete('/profile', 'destroy')->name('profile.destroy');
+  Route::get('role', function () {
+    $user = auth()->user();
+    $user->assignRole('wali-kelas');
   });
 
-  // berita manajement
-  Route::prefix('berita')->controller(BeritaController::class)->group( function () {
-    Route::get('/', 'index')->name('berita');
+  // todo role admin
+  Route::middleware(['role:super-admin'])->group( function () {
 
-    // kategory manajement
-    Route::prefix('kategory')->controller(KategoryController::class)->group( function () {
-      Route::get('/', 'index')->name('kategory');
-      Route::post('/', 'store')->name('kategory.store');
-      Route::get('/data-kategory', 'data')->name('kategory.data');
-      Route::delete('/{id}', 'destroy')->name('kategory.destroy');
-    });
-  });
+    // todo user manajement
+    Route::controller(ProfileController::class)->group( function () {
+      Route::get('/profile', 'edit')->name('profile.edit');
+      Route::patch('/profile', 'update')->name('profile.update');
+      Route::delete('/profile', 'destroy')->name('profile.destroy');
+    }); // todo end user manajement
 
+    // todo guru
+    // Route::resource()
 
-  // pengaturan website
+    // todo role admin guru wali kelas
+    Route::middleware(['role:guru|wali-kelas'])->group( function () {
+
+      // todo berita
+      Route::prefix('berita')->controller(BeritaController::class)->group( function () {
+        Route::get('/', 'index')->name('berita');
+
+        // todo kategory
+        Route::prefix('kategory')->controller(KategoryController::class)->group( function () {
+          Route::get('/', 'index')->name('kategory');
+          Route::post('/', 'store')->name('kategory.store');
+          Route::get('/data-kategory', 'data')->name('kategory.data');
+          Route::delete('/{id}', 'destroy')->name('kategory.destroy');
+        }); // todo end kategory
+
+      }); // todo end berita
+
+      // todo jurnal kelas
+      // Route::resource()
+
+    }); // todo end role guru, wali kelas
+
+    // todo role wali kelas
+    Route::middleware(['role:wali-kelas'])->group( function () {
+      // Route::
+    }); // todo end role wali kelas
+
+    // todo user
+    Route::resource('user-manajement', UserController::class)
+        ->except(['create', 'store'])
+        ->parameters(['user_manajement'  => 'user']);
+
+    // todo mata pelajaran
+    Route::resource('mata-pelajaran', MataPelajaranController::class)
+        ->except(['show'])
+        ->parameters(['mata_pelajaran'  => 'mataPelajaran']);
+
+  }); // todo role admin
+
+  // * fitur pengaturan
+
   Route::get('pengaturan', fn () => view('dashboard.pengaturan.pengaturan'))->name('pengaturan');
 
-  // telepon
-  Route::resource('telepon', TeleponController::class)->except([
-    'show'
-  ]);
-  // social media
-  Route::resource('social_media', SocialMediaLinkController::class)->except([
-    'show'
-  ])->parameters([
-    'social_media' => 'socialMediaLink'
-  ]);
-  // banner depan
-  Route::resource('banner', BannerController::class)->except([
-    'show', 'edit', 'update'
-  ]);
-  // jurusan
-  Route::resource('jurusan', JurusanController::class)->except([
-    'show'
-  ]);
-  Route::get('show_data/{jurusan}', [JurusanController::class, 'showJurusan'])->name('jurusan.show');
-
-  // testimoni
-  Route::resource('testimoni', TestimoniController::class);
-
-  //
-  Route::resource('pertanyaan', DaftarPertanyaanController::class)
-      ->parameters(['pertanyaan'    => 'daftarPertanyaan']);
-
-  Route::resource('user-manajement', UserController::class)
-      ->except(['create', 'store'])
-      ->parameters(['user_manajement'  => 'user']);
-
-  // mata pelajaran
-  Route::resource('mata-pelajaran', MataPelajaranController::class)
-      ->except(['show'])
-      ->parameters(['mata_pelajaran'  => 'mataPelajaran']);
+  require __DIR__.'/webPengaturan.php';
 
 }); // auth

@@ -8,13 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class MataPelajaran extends Model
 {
-    use HasFactory;
-    use DateTimeTrait;
+  use HasFactory;
+  use DateTimeTrait;
 
-    protected $table = 'mata_pelajaran';
+  protected $table = 'mata_pelajaran';
 
-    protected $fillable = [
-      'nama'
-    ];
+  protected $fillable = [
+    'nama'
+  ];
 
+  public function jurnalKellas ()
+  {
+    return $this->hasMany(JurnalKelas::class);
+  }
 }

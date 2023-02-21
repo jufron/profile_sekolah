@@ -24,4 +24,9 @@ trait AllertMessageTrait {
   {
     return $this->swetAllert($message);
   }
+
+  protected function successArship ($message = 'Berhasil Diarship')
+  {
+    return $this->swetAllert($message);
+  }
 }

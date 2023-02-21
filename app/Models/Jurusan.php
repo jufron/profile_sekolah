@@ -51,4 +51,8 @@ class Jurusan extends Model
       );
     }
 
+    public function jurnalKelas ()
+    {
+      return $this->hasMany(JurnalKelas::class);
+    }
 }

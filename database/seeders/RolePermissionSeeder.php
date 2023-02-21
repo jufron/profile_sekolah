@@ -23,7 +23,7 @@ class RolePermissionSeeder extends Seeder
       collect([
         'super-admin',
         'guru',
-        'wali-kelas',
+        'user',
         'siswa'
       ])->map( function ($value) {
         return Role::create(['name' => $value]);

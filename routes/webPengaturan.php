@@ -20,8 +20,7 @@ Route::middleware(['role:super-admin'])->group( function () {
       ->except(['show', 'edit', 'update']);
 
   // todo jurusan
-  Route::resource('jurusan', JurusanController::class)
-      ->except(['show']);
+  Route::resource('jurusan', JurusanController::class);
 
   // todo testimoni
   Route::resource('testimoni', TestimoniController::class);

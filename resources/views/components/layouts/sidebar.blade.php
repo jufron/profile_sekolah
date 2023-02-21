@@ -17,11 +17,11 @@
   </li>
   @endrole
 
-  @role('wali-kelas')
+  @role('guru')
   <li class="nav-item active">
       <a class="nav-link" href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Home Wali Kelas</span></a>
+        <span>Home Guru</span></a>
   </li>
   @endrole
 
@@ -49,7 +49,6 @@
   </li>
   @endhasrole
 
-  <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item
   @if (request()->routeIs('berita') || request()->routeIs('kategory')) active @endif">
       <a
@@ -153,30 +152,56 @@
   </li>
   @endhasrole
 
-  @hasrole('wali-kelas')
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('banner.index') }}">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Absensi Wali Kelas</span>
-    </a>
-  </li>
-  @endhasrole
-
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('banner.index') }}">
-      <i class="fas fa-fw fa-table"></i>
-      <span>Absensi Umum</span>
-    </a>
-  </li>
-
-  @role('super-admin|wali-kelas|guru')
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('banner.index') }}">
+  @role('guru|super-admin')
+  <li class="nav-item @requestRoute('jurnal.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('jurnal.index') }}">
       <i class="fas fa-fw fa-table"></i>
       <span>Jurnal Kelas</span>
     </a>
   </li>
   @endrole
+
+
+  {{-- @role('super-admin|guru')
+  <li class="nav-item @requestRoute('jurnal.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('jurnal.index') }}">
+      <i class="fas fa-fw fa-table"></i>
+      <span>Jurnal Kelas</span>
+    </a>
+  </li> --}}
+
+   {{-- <li class="nav-item
+  @if (request()->routeIs('kelasx.index') || request()->routeIs('kelasxi.index') || request()->routeIs('kelasxii.index')) active @endif">
+      <a
+        class="@if (request()->routeIs('kelasx.index') || request()->routeIs('kelasxi.index') || request()->routeIs('kelasxii.index'))
+        nav-link
+        @else
+        nav-link collapsed
+        @endif"
+        href="#"
+        data-toggle="collapse"
+        data-target="#collapseJurnal"
+        aria-expanded="false"
+        aria-controls="collapseJurnal"
+         >
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Jurnal</span>
+      </a>
+      <div
+        id="collapseJurnal"
+        class="collapse @if (request()->routeIs('kelasx.index') || request()->routeIs('kelasxi.index') || request()->routeIs('kelasxii.index')) show @endif"
+        aria-labelledby="headingJurnal"
+        data-parent="#accordionSidebar"
+        @if (request()->routeIs('kelasx.index') || request()->routeIs('kelasxi.index') || request()->routeIs('kelasxii.index')) style="" @endif
+        >
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item @requestRoute('kelasx.index') active @endrequestRoute" href="{{ route('kelasx.index') }}">Kelas X</a>
+            <a class="collapse-item @requestRoute('kelasxi.index') active @endrequestRoute" href="{{ route('kelasxi.index') }}">Kelas XI</a>
+            <a class="collapse-item @requestRoute('kelasxii.index') active @endrequestRoute" href="{{ route('kelasxii.index') }}">Kelas XII</a>
+          </div>
+      </div>
+  </li>
+  @endrole --}}
 
   <!-- Nav Item - Pages Collapse Menu -->
   {{-- <li class="nav-item">

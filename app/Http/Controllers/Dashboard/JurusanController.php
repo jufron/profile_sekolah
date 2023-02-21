@@ -59,7 +59,7 @@ class JurusanController extends Controller
     return to_route('jurusan.index');
   }
 
-  public function showJurusan (Jurusan $jurusan)
+  public function show (Jurusan $jurusan)
   {
     return response()->json([
       'statusCode'  => 200,

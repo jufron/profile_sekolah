@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeleponRequest;
+use App\Http\Traits\AllertMessageTrait;
 use App\Models\Telepon;
 
 class TeleponController extends Controller
 {
+  use AllertMessageTrait;
+
     public function index()
     {
       return view('dashboard.telepon.telepon', [
@@ -24,7 +27,7 @@ class TeleponController extends Controller
     {
       $request->validate(['nomor' => 'unique:telepon']);
       Telepon::create($request->all());
-      alert()->success('Berhasil','Berhasil tersimpan');
+      $this->ssuccesCreate();
       return to_route('telepon.index');
     }
 
@@ -36,14 +39,14 @@ class TeleponController extends Controller
     public function update(TeleponRequest $request, Telepon $telepon)
     {
       $telepon->update($request->all());
-      alert()->success('Berhasil','Berhasil Diperbaharui');
+      $this->successUpdate();
       return to_route('telepon.index');
     }
 
     public function destroy(Telepon $telepon)
     {
       $telepon->delete();
-      alert()->success('Berhasil','Berhasil Terhapus');
+      $this->successDelete();
       return to_route('telepon.index');
     }
 }

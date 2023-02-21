@@ -7,6 +7,10 @@
       <div class="card-body">
         <h1 class="h3 text-gray-800 mb-2">Telepon</h1>
 
+        <div class="alert alert-info" role="alert">
+          Nomor telepon yang dimasukan harus terhubung ke whatsapp!
+        </div>
+
         <a href="{{ route('telepon.create') }}" class="btn btn-success btn-icon-split my-3">
           <span class="text">Tambah</span>
         </a>

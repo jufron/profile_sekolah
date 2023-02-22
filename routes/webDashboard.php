@@ -33,9 +33,9 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
     // Route::resource()
 
     // todo user
-    Route::resource('user-manajement', UserController::class)
-        ->except(['create', 'store'])
-        ->parameters(['user_manajement'  => 'user']);
+    Route::resource('user_manajement', UserController::class)
+          ->except(['create', 'store'])
+          ->parameters(['user_manajement'  => 'user']);
 
     // todo mata pelajaran
     Route::resource('mata-pelajaran', MataPelajaranController::class)

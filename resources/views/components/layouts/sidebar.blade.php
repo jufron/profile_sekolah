@@ -34,8 +34,8 @@
   </div>
 
   @hasrole('super-admin')
-  <li class="nav-item @requestRoute('user-manajement.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('user-manajement.index') }}">
+  <li class="nav-item @requestRoute('user_manajement.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('user_manajement.index') }}">
       <i class="fas fa-fw fa-table"></i>
       <span>User</span>
     </a>

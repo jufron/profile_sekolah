@@ -76,7 +76,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
 
   Route::middleware('role:guru')->group(function () {
 
-    Route::resource('guru', GuruController::class);
+    Route::resource('guru', GuruController::class)
+         ->except(['show', 'destroy']);
 
   }); // todo role guru
 

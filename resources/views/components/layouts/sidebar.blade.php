@@ -41,8 +41,8 @@
     </a>
   </li>
 
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('banner.index') }}">
+  <li class="nav-item">
+    <a class="nav-link" href="#">
       <i class="fas fa-fw fa-table"></i>
       <span>Galeri</span>
     </a>
@@ -137,8 +137,8 @@
   </div>
 
   @hasrole('super-admin')
-  <li class="nav-item @requestRoute('banner.index') active @endrequestRoute">
-    <a class="nav-link" href="{{ route('banner.index') }}">
+  <li class="nav-item @requestRoute('guru_manajement.index') active @endrequestRoute">
+    <a class="nav-link" href="{{ route('guru_manajement.index') }}">
       <i class="fas fa-fw fa-table"></i>
       <span>Guru</span>
     </a>

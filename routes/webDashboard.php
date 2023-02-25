@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\{
   BeritaController,
+  GuruController,
   KategoryController,
   MataPelajaranController,
-  UserController
+  UserController,
+
+  Guru\GuruForAdminController,
+  JurnalKelas\JurnalKelasGuruController
 };
-use App\Http\Controllers\Dashboard\JurnalKelas\JurnalKelasGuruController;
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function () {
 
@@ -19,18 +22,13 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
   //   $user->assignRole('guru');
   // });
 
-  // todo role admin
+  Route::controller(ProfileController::class)->group( function () {
+    Route::get('/profile', 'edit')->name('profile.edit');
+    Route::patch('/profile', 'update')->name('profile.update');
+    Route::delete('/profile', 'destroy')->name('profile.destroy');
+  }); // todo end user
+
   Route::middleware(['role:super-admin'])->group( function () {
-
-    // todo user seting
-    Route::controller(ProfileController::class)->group( function () {
-      Route::get('/profile', 'edit')->name('profile.edit');
-      Route::patch('/profile', 'update')->name('profile.update');
-      Route::delete('/profile', 'destroy')->name('profile.destroy');
-    }); // todo end user manajement
-
-    // todo guru
-    // Route::resource()
 
     // todo user
     Route::resource('user_manajement', UserController::class)
@@ -39,12 +37,16 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
 
     // todo mata pelajaran
     Route::resource('mata-pelajaran', MataPelajaranController::class)
-        ->except(['show'])
-        ->parameters(['mata_pelajaran'  => 'mataPelajaran']);
+          ->except(['show'])
+          ->parameters(['mata_pelajaran'  => 'mataPelajaran']);
+
+    Route::prefix('guru_manajement')->controller(GuruForAdminController::class)->group( function () {
+      Route::get('/', 'index')->name('guru_manajement.index');
+      Route::get('show', 'show')->name('guru_manajement.show');
+    });
 
   }); // todo role super-admin
 
-  // todo role super-admin, guru
   Route::middleware(['role:guru|super-admin'])->group( function () {
 
     // todo berita
@@ -71,6 +73,12 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
            ->parameters(['jurnal' => 'jurnalKelas']);
 
   }); // todo end role super-admin, guru
+
+  Route::middleware('role:guru')->group(function () {
+
+    Route::resource('guru', GuruController::class);
+
+  }); // todo role guru
 
   // * fitur pengaturan
 

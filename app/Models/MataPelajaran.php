@@ -21,4 +21,9 @@ class MataPelajaran extends Model
   {
     return $this->hasMany(JurnalKelas::class);
   }
+
+  public function guru ()
+  {
+    return $this->belongsToMany(Guru::class)->withTimestamps();
+  }
 }

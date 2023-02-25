@@ -178,8 +178,15 @@
             aria-labelledby="userDropdown">
             <a class="dropdown-item" href="{{ route('profile.edit') }}">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profil
+                Akun
             </a>
+            {{-- kalo admin baru tampilin pengaturan --}}
+            @role('guru')
+            <a class="dropdown-item" href="{{ route('guru.index') }}">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profil Guru
+            </a>
+            @endrole
             {{-- kalo admin baru tampilin pengaturan --}}
             <a class="dropdown-item" href="{{ route('pengaturan') }}">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>

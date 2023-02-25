@@ -55,4 +55,9 @@ class Jurusan extends Model
     {
       return $this->hasMany(JurnalKelas::class);
     }
+
+    public function guru ()
+    {
+      return $this->belongsToMany(Guru::class, 'guru_jurusan')->withTimestamps();
+    }
 }

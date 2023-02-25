@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Guru;
 
 use App\Models\{
   Guru,
@@ -15,7 +15,6 @@ use App\Http\{
 };
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class GuruController extends Controller
 {

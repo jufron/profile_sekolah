@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\{
   BeritaController,
-  GuruController,
   KategoryController,
   MataPelajaranController,
   UserController,
 
   Guru\GuruForAdminController,
+  Guru\GuruController,
   JurnalKelas\JurnalKelasGuruController
 };
 

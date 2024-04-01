@@ -79,23 +79,6 @@ class GuruController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Guru $guru)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Guru $guru)
     {
       if (!Guru::where('user_id', auth()->user()->id)->get()->first()) {
@@ -141,17 +124,6 @@ class GuruController extends Controller
         $request->updateGuru($guru, $guru->avatar);
         return to_route('guru.index');
       }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Guru  $guru
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Guru $guru)
-    {
-        //
     }
 
 }

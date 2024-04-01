@@ -42,7 +42,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group( function ()
 
     Route::prefix('guru_manajement')->controller(GuruForAdminController::class)->group( function () {
       Route::get('/', 'index')->name('guru_manajement.index');
-      Route::get('show', 'show')->name('guru_manajement.show');
+      Route::get('show/{guru}', 'show')->name('guru_manajement.show');
+      Route::get('laporan', 'laporan')->name('guru.laporan');
     });
 
   }); // todo role super-admin

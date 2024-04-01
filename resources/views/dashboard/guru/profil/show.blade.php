@@ -57,6 +57,16 @@
           <li class="list-group-item">
             <div class="row">
               <div class="col-md-6 col-6">
+                Status
+              </div>
+              <div class="col-md-6 col-6">
+                <span>: {{ $oneGuru->status ?? '-' }}</span>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-6 col-6">
                 Gelar Depan
               </div>
               <div class="col-md-6 col-6">
@@ -137,7 +147,7 @@
         </ul>
 
         <div class="px-3 d-flex mt-3 justify-content-between align-items-center">
-          <p>Jurusan</p>
+          <p>Mata Pelajaran</p>
         </div>
         <div class="row px-3">
           @if ($oneGuru)
@@ -148,7 +158,7 @@
         </div>
 
         <div class="px-3 d-flex mt-3 justify-content-between align-items-center">
-          <p>Mata Pelajaran</p>
+          <p>Jurusan</p>
         </div>
         <div class="row px-3">
           @if ($oneGuru)

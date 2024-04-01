@@ -50,7 +50,6 @@ class GuruRequest extends FormRequest
     public function validateCheckUnique ()
     {
       $this->validate([
-        'nip'             => ['unique:guru'],
         'nomor_telepon'   => ['unique:guru']
       ]);
     }

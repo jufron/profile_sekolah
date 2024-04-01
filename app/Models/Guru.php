@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
+use App\Http\Traits\DateTimeTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Guru extends Model
 {
-  use HasFactory;
+  use HasFactory, DateTimeTrait;
 
   protected $table = 'guru';
   protected $fillable = [
@@ -26,6 +30,27 @@ class Guru extends Model
     'nomor_telepon',
     'avatar'
   ];
+
+  protected $appends = [
+    'tanggal_buat',
+    'tanggal_perbaharui',
+    'avatar_storage',
+    'tempat_tanggal_lahir'
+  ];
+
+  protected function avatarStorage () : Attribute
+  {
+    return Attribute::make(
+      get: fn () => Storage::url($this->getAttribute('avatar'))
+    );
+  }
+
+  protected function tempatTanggalLahir () : Attribute
+  {
+    return Attribute::make(
+      get : fn () => Carbon::parse($this->getAttribute('tanggal_lahir'))->format('d M Y')
+    );
+  }
 
   public function mataPelajaran ()
   {
